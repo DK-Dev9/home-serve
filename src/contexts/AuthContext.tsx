@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 // User type definition
@@ -47,6 +46,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     // Check if user is stored in localStorage
     const storedUser = localStorage.getItem("user");
+    console.log("Stored user:", storedUser);
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -55,6 +55,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string, userType: "user" | "provider" = "user") => {
     try {
+      console.log('Attempting login for');
       setIsLoading(true);
       // In a real app, this would be an API call
       // For now, we're using mock data
